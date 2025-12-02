@@ -10,6 +10,7 @@ MATLAB utilities for experimenting with replacement-type fractal curves.
 - `matlab/generatorError.m`: objective function for refining generators against a binary mask.
 - `matlab/optimizeGeneratorVertices.m`: fminsearch-based refinement of generator vertices.
 - `matlab/demoKoch.m`: simple example using a Koch-style generator.
+- `matlab/fitReplacementFractal.m`: end-to-end automation from an image to a fitted generator.
 
 ## Usage
 1. Open MATLAB and add the `matlab` folder to your path.
@@ -17,5 +18,7 @@ MATLAB utilities for experimenting with replacement-type fractal curves.
 3. Build your own generator `g` (with endpoints `0` and `1`), choose recursion depth `n`,
    and call `drawFractalSegment`, `generateFractalPoints`, or `generateFractalImage` to
    explore different curves.
-4. When fitting to a skeletonised mask, start with manual vertices, then call
-   `optimizeGeneratorVertices` to refine the intermediate points.
+4. To automate the full "photo → skeleton → fitted generator" workflow, call
+   `fitReplacementFractal(imagePath, depth)`; it crops (optional), edges,
+   skeletonises, traces the main curve, auto-selects endpoints, simplifies to a
+   generator, and can refine the vertices against the mask.
